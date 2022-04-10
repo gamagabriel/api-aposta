@@ -1,7 +1,8 @@
-package com.api.bet;
+package com.api.bet.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 
 @Entity
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 public class Apostador {
 
@@ -18,10 +20,5 @@ public class Apostador {
     private Long id;
     private String name;
     private String email;
-
-    public Apostador(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
 
 }

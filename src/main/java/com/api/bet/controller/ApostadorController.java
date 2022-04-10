@@ -1,5 +1,8 @@
-package com.api.bet;
+package com.api.bet.controller;
 
+import com.api.bet.model.dto.ApostadorIn;
+import com.api.bet.service.ApostadorService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -7,19 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
+@RequiredArgsConstructor
 @RestController
-public class BetController {
+public class ApostadorController {
 
-    private final ApostadorRepository apostadorRepository;
-
-    public BetController(ApostadorRepository apostadorRepository) {
-        this.apostadorRepository = apostadorRepository;
-    }
+    private final ApostadorService apostadorService;
 
     @PostMapping("/apostador")
     public ResponseEntity saveBet(@RequestBody ApostadorIn apostadorIn){
-        Apostador apostador = apostadorIn.toConvert();
-        apostadorRepository.save(apostador);
+        apostadorService.salvaApostador(apostadorIn);
         return ResponseEntity.status(CREATED).build();
     }
 }
