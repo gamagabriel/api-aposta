@@ -1,9 +1,9 @@
 package com.api.bet.model.dto;
 
-import com.api.bet.model.Apostador;
+
 import lombok.*;
 
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ApostadorIn {
