@@ -9,6 +9,6 @@ public class ApostaOut {
 
     private String numeroAposta;
     private String nomeApostador;
-    private String emailApostadoor;
+    private String emailApostador;
 
 }
