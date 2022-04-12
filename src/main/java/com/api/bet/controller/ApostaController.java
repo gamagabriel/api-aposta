@@ -1,8 +1,8 @@
 package com.api.bet.controller;
 
 import com.api.bet.model.dto.ApostaIn;
+import com.api.bet.model.dto.ApostaOut;
 import com.api.bet.service.ApostaService;
-import com.api.bet.service.ApostadorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,8 +18,9 @@ public class ApostaController {
     private final ApostaService apostaService;
 
     @PostMapping("/aposta")
-    public ResponseEntity salvaAposta(@RequestBody ApostaIn apostaIn){
-        System.out.println("IdApostador: " + apostaIn.getIdApostador());
-        return ResponseEntity.status(CREATED).build();
+    public ResponseEntity <ApostaOut> salvaAposta(@RequestBody ApostaIn apostaIn){
+        ApostaOut apostaOut = apostaService.salvaAposta(apostaIn);
+
+        return ResponseEntity.status(CREATED).body(apostaOut);
     }
 }
