@@ -9,4 +9,6 @@ public class ApostaIn {
 
     @NotNull
     private Long idApostador;
+
+
 }
