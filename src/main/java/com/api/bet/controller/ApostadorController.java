@@ -1,14 +1,15 @@
 package com.api.bet.controller;
 
+import com.api.bet.model.Apostador;
 import com.api.bet.model.dto.ApostadorIn;
 import com.api.bet.service.ApostadorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import java.util.List;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
@@ -23,4 +24,12 @@ public class ApostadorController {
         apostadorService.salvaApostador(apostadorIn);
         return ResponseEntity.status(CREATED).build();
     }
+
+    @GetMapping("/read-all")
+    public List<Apostador> findAll(){
+        return apostadorService.findAll();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable Long id){apostadorService.delete(id);}
 }
