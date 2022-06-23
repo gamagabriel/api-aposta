@@ -17,13 +17,15 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 public class Apostador {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "O nome do Apostador não pode estar em branco")
     private String name;
 
-    @NotBlank @Email
+    @NotBlank(message = "O email do Apostador não pode estar em branco")
+    @Email(message = "Por favor, preencha o campo com um email válido.")
     private String email;
 
 }

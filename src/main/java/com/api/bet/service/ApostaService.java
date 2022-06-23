@@ -22,10 +22,8 @@ public class ApostaService {
     private final ApostaRepository apostaRepository;
 
 
-    ApostaOut apostaOut = null;
-
     public ApostaOut salvaAposta(ApostaIn apostaIn) {
-
+        ApostaOut apostaOut = null;
         try {
             Optional<Apostador> apostador = apostadorRepository.findById(apostaIn.getIdApostador());
             String numAposta = UUID.randomUUID().toString();
@@ -54,6 +52,10 @@ public class ApostaService {
             out.setNumeroAposta(aposta1.getNumeroAposta());
             list.add(out);
         });
+
+        if (list.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+        }
         return list;
     }
 }
